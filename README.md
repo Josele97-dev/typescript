@@ -75,7 +75,7 @@ Define las entidades del sistema educativo con tipado estricto.
 
 ```ts
 interface Estudiante {
-  readonly id: string;   // inmutable tras creación
+  readonly id: string;  
   nombreCompleto: string;
   fechaNacimiento: Date;
   email: string;
@@ -125,8 +125,8 @@ function obtenerRecurso<T>(endpoint: string): Promise<RespuestaAPI<T>>
 
 ```ts
 obtenerRecurso<Estudiante>("/estudiantes/1").then((respuesta) => {
-  console.log(respuesta.codigoEstado); // 200
-  console.log(respuesta.datos);        // tipado como Estudiante
+  console.log(respuesta.codigoEstado); 
+  console.log(respuesta.datos);        
 });
 ```
 
@@ -145,8 +145,6 @@ Una sola función sirve para cualquier recurso. Sin genéricos habría que dupli
 | **Unión discriminada** | 2 | Campo `tipo` como discriminante en el `switch` |
 | **Tipo `never`** | 2 | Garantía de exhaustividad en el `switch` |
 | **Genéricos `<T>`** | 2 | `RespuestaAPI<T>` y `obtenerRecurso<T>` reutilizables |
-
-Para una explicación detallada de las decisiones de diseño, ver [`docs/arquitectura.md`](./docs/arquitectura.md).
 
 ---
 
